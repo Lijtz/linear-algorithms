@@ -24,15 +24,12 @@ def row_echelon(A):
     A = to_numpy(A)
     m, n = A.shape
     row = 0
-    for col in range(n - 1):  # last column is RHS
-        # Find pivot (max abs value in column col from row..m-1)
+    for col in range(n - 1): 
         pivot_row = np.argmax(np.abs(A[row:m, col])) + row
-        if abs(A[pivot_row, col]) < 1e-12:  # no pivot in this column
+        if abs(A[pivot_row, col]) < 1e-12:  
             continue
-        # Swap if needed
         if pivot_row != row:
             A[[row, pivot_row], :] = A[[pivot_row, row], :]
-        # Eliminate below
         for r in range(row + 1, m):
             if A[r, col] == 0:
                 continue
@@ -41,16 +38,14 @@ def row_echelon(A):
         row += 1
         if row == m:
             break
-    # Zero out extremely small values
     A[np.abs(A) < 1e-12] = 0.0
     return A
 
 if __name__ == "__main__":
-    # Example usage
     A = [
         [2, 1, -1,  8],
         [-3, -1, 2, -11],
         [-2, 1, 2, -3]
-    ]  # augmented matrix for system with 3 variables
+    ] 
     U = row_echelon(A)
     print("Row echelon form:\n", U)
