@@ -12,7 +12,6 @@ def cholesky(A):
     if A.ndim != 2 or A.shape[0] != A.shape[1]:
         raise ValueError("A must be a square matrix")
     n = A.shape[0]
-    # Check symmetry
     if not np.allclose(A, A.T, atol=1e-10):
         raise ValueError("Matrix is not symmetric")
     L = np.zeros_like(A)
@@ -28,11 +27,10 @@ def cholesky(A):
     return L
 
 if __name__ == "__main__":
-    # Example
     A = [[25, 15, -5],
          [15, 18,  0],
          [-5,  0, 11]]
     L = cholesky(A)
     print("L:\n", L)
-    # Verify
     print("L @ L.T:\n", L @ L.T)
+
