@@ -24,13 +24,11 @@ def modified_gram_schmidt(A):
     return Q, R
 
 if __name__ == "__main__":
-    # Example
     A = np.array([[1., 1., 0.],
                   [1., 0., 1.],
                   [0., 1., 1.]])
     Q, R = modified_gram_schmidt(A)
     print("Q:\n", Q)
     print("R:\n", R)
-    # Verify A == Q @ R
     print("Q @ R:\n", Q @ R)
-_
+
