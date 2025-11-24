@@ -13,9 +13,6 @@ def to_numpy(A):
 
 def row_echelon(A):
     """
-    Perform Gaussian elimination (forward elimination) to obtain row echelon form.
-    This implementation performs partial pivoting for numerical stability.
-    
     Parameters:
         A : array-like, shape (m, n+1) augmented matrix
     Returns:
